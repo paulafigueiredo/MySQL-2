@@ -1,0 +1,47 @@
+create database db_rh2;
+use db_rh2;
+
+create table tb_cargo(
+id int(3) auto_increment primary key not null,
+nome_cargo varchar(60),
+setor varchar(60));
+
+
+create table tb_funcionario(
+id int(3) auto_increment primary key not null,
+nome varchar(60),
+contato int(12),
+salario decimal(6.2),
+cargo_id int(3),
+FOREIGN KEY (cargo_id) REFERENCES tb_cargo (id)
+);
+
+insert into tb_cargo (nome_cargo,setor) values
+ ("Desenvolvedor junior","Tecnologia");
+ ("Supervisor","Tecnologia");
+ ("Desenvolvedor Senior","Tecnologia");
+ ("Desenvolvedor pleno","Tecnologia");
+ ("Poo","Tecnologia");
+
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Luane","99818-3513",4500.00,1);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Maria","99118-3913",,2);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Ruan","99218-2335",6250.00,3);
+insert into tb_funcionario (nome,contato,salario,cargo_id)values("Thaissa","99718-5313",6250.00,3);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Pedro","99817-3514",5000.00,4500.00,,1);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Thiago","99018-3913",8300.00,4);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Luana","99815-3351",8300.00,4);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Carla","99810-3459",7450.00,5);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Ana Julia","99918-3513",8200.00,2);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Teresa","99818-0987",4500.00,1);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Hosana","99118-1234",6250.00,3);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Allan","99987-3519",8300.00,4);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Michel","99515-3513",8300.00,4);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Marta","99867-6713",8200.00,2);
+insert into tb_funcionario (nome,contato,salario,cargo_id) values("Rosana","99990-1771",300.00,4500.00,1);
+
+select * from tb_funcionario where salario > 2000;
+select * from tb_funcionario where salario between 1000 and 2000;
+select * from tb_funcionario where nome like '%c%';
+select f.nome,c.nome_cargo from tb_funcionario f inner join tb_cargo c on f.cargo_id = c.id;
+select f.nome,c.nome_cargo from tb_funcionario f inner join tb_cargo c on f.cargo_id = c.id 
+where c.nome_cargo = 'Desenvolvedor junior';
